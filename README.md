@@ -1,59 +1,52 @@
 # StartingProject
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+A compact Angular 21 training project with a hero header and a random user showcase, built with standalone components and the new signal-based APIs.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Hero header**: `app-header` renders the logo, title, and positioning copy so the page feels like a task-management hero banner.
+- **Random user showcase**: `app-user` picks a random entry from `src/app/class/dummy-users.ts` every time you click the button, updating the avatar and name from the static `/public/users` assets.
+- **Signals for state**: The sample uses `signal` to keep the selected user reactive without a full component store.
 
-```bash
-ng serve
-```
+## Tech stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 21 standalone components
+- TypeScript ~5.9
+- Vitest for unit tests
+- RxJS for future reactive helpers
 
-## Code scaffolding
+## Getting started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Requirements
 
-```bash
-ng generate component component-name
-```
+- Node.js 20+ (the project is configured with npm 11.5.1 for package management).
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Install dependencies
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Common scripts
 
-## Running unit tests
+- `npm start` – launch the development server on http://localhost:4200 with automatic reload.
+- `npm run build` – produce a production build in `dist/`.
+- `npm run watch` – rebuild continuously using the development configuration.
+- `npm test` – run the Vitest suite (future-friendly replacement for Karma).
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Project layout
 
-```bash
-ng test
-```
+- `src/app/app.ts` loads `Header` and `User` as standalone components and exposes the title signal used in `app.html`.
+- `src/app/component/header/*` contains the hero markup, styles, and specs.
+- `src/app/component/user/*` handles the random user picker and binds the avatar along with the click handler.
+- `src/app/class/dummy-users.ts` provides the hard-coded user data referenced by `app-user`.
 
-## Running end-to-end tests
+## Assets
 
-For end-to-end (e2e) testing, run:
+- `public/task-management-logo.png` is used inside the header component.
+- `public/users/user-*.jpg` are the avatars that `app-user` cycles through.
 
-```bash
-ng e2e
-```
+## Learn more
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular CLI docs: https://angular.dev/cli
+- Vitest documentation: https://vitest.dev
