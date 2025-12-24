@@ -13,7 +13,7 @@ import { Task } from "./component/task/task";
 export class App {
   users = DUMMY_USERS;
   protected readonly title = signal('starting-project');
-  selectedUserid = signal('u1');
+  selectedUserid = signal<string | null>(null);
   selectedUser = computed(() => {
     return this.users.find(user => user.id === this.selectedUserid())!;
   });

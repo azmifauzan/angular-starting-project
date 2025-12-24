@@ -1,24 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { User } from './user';
+import { Task } from './task';
 
-describe('User', () => {
-  let component: User;
-  let fixture: ComponentFixture<User>;
+describe('Task', () => {
+  let component: Task;
+  let fixture: ComponentFixture<Task>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [User]
+      imports: [Task]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(User);
+    fixture = TestBed.createComponent(Task);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('user', {
-      id: 'u1',
-      avatar: 'user1.jpg',
-      name: 'Test User'
-    });
     await fixture.whenStable();
   });
 

@@ -1,23 +1,23 @@
-import { Component,signal } from '@angular/core';
-import { DUMMY_USERS } from '../../class/dummy-users';
-
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+import { Component, computed, input, output } from '@angular/core';
+import { UserType } from './user.model';
+import { Card } from "../shared/card/card";
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [Card],
   templateUrl: './user.html',
   styleUrl: './user.css',
 })
 export class User {
-  selectedUser = signal(DUMMY_USERS[randomIndex]);
+  user = input.required<UserType>();
+  select = output<string>();
+  selected = input.required<boolean>();
 
-  get imagePath(){
-    return 'users/' + this.selectedUser().avatar;
-  }
+  imagePath = computed(() => {
+    return 'users/' + this.user().avatar;
+  });
 
-  onSelectUser(){
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);    
+  onSelectUser(){   
+    this.select.emit(this.user().id);
   }
 }
